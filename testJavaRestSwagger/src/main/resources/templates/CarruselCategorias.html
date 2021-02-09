@@ -1,0 +1,144 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,700' rel='stylesheet' type='text/css'>
+    <link th:href="@{/css/custom.css}" rel='stylesheet' type='text/css'>
+    
+    <style type="text/css">
+    	   html{
+		        display: flex;
+		        flex-flow: row nowrap;  
+		        justify-content: center;
+		        align-content: center;
+		        align-items: center;
+		      
+		    }
+	    	body {
+			    margin: 0;
+		        flex: 0 1 auto;
+		        align-self: auto;
+		        /*recommend 1920 / 1080 max based on usage stats, use 100% to that point*/
+		        width: 100%;
+		        max-width: 900px;
+		        height: 100%;
+		        max-height: 600px;
+			}
+		
+		
+		/* carousel fullscreen */
+		
+		.carousel-fullscreen .carousel-inner .item {
+		    height: 50%;
+		    min-height: 400px;
+		    background-position: center center;
+		    background-repeat: no-repeat;
+		    background-size: cover;
+		}
+		
+		
+		/* carousel fullscreen - vertically centered caption*/
+		
+		.carousel-fullscreen .carousel-caption {
+		    top: 50%;
+		    bottom: auto;
+		    -webkit-transform: translate(0, -50%);
+		    -ms-transform: translate(0, -50%);
+		    transform: translate(0, -50%);
+		}
+    </style>
+</head>
+<body>
+
+<div id="carousel-example-generic2" class="carousel slide carousel-fullscreen carousel-fade" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic2" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic2" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic2" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic2" data-slide-to="3"></li>
+        <li data-target="#carousel-example-generic2" data-slide-to="4"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active" th:style="'background-image:url(' + ${url0} + ');'">
+            <div class="overlay"></div>
+            <div class="carousel-caption">
+                <h1 class="super-heading"></h1>
+                <p class="super-paragraph"></p>
+            </div>
+        </div>
+        <div class="item" th:style="'background-image:url(' + ${url1} + ');'">
+            <div class="overlay"></div>
+            <div class="carousel-caption">
+                <h1 class="super-heading"></h1>
+                <p class="super-paragraph"></p>
+            </div>
+        </div>
+        <div class="item" th:style="'background-image:url(' + ${url2} + ');'">
+            <div class="overlay"></div>
+            <div class="carousel-caption">
+                <h1 class="super-heading"></h1>
+                <p></p>
+            </div>
+        </div>
+        <div class="item" th:style="'background-image:url(' + ${url3} + ');'">
+            <div class="overlay"></div>
+            <div class="carousel-caption">
+                <h1 class="super-heading"></h1>
+                <p></p>
+            </div>
+        </div>
+        <div class="item" th:style="'background-image:url(' + ${url4} + ');'">
+            <div class="overlay"></div>
+            <div class="carousel-caption">
+                <h1 class="super-heading"></h1>
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic2" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic2" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="container" style="background-color: white;">
+    <div class="row">
+        <div class="col-lg-10 mt-4 mb-4">
+            <table class="table table-hover" style="width: 100%">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Relevancia</th>
+                    <th>Ícono</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="categorias : ${categorias}">
+                    <td th:text="${categorias.name}">Nombre</td>
+                    <td th:text="${categorias.relevance}">Relevancia</td>
+                    <td> 
+                    	<a>
+		                    <img th:src="${categorias.iconImageUrl}" height="30" alt="web.png">
+		                </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+         </div>
+     </div>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
